@@ -1,0 +1,65 @@
+--Pages--
+
+survey:         page with fields to be filled out, has option to view leaderboard after submission
+                name: dropdown = user.names
+                month: dropdown = months (of current calendar year)
+                leader name: radiobuttons = leader.names
+                event: 
+                    staff meeting, 
+                    safety team meeting, 
+                    share off the job safety/who had your back?, 
+                    review JHA before new task, 
+                    present a safety meeting, 
+                    provide time and/or funds for safety improvements
+                    participation in a safety inspection
+                    safety measures for work travel during COVID
+                    Plant Trial Preperation
+                    Safety Mentor
+                    Calculated Activity
+                        How much time to address this issue: A day or less, a few days a week, < 6 months, > 6 months
+                        Severity of Hazard address (i for help): 
+                            First Aid: no recovery required before returning to job: Bruising, small cuts, no loss time, doesn't require attention by medical doctor
+                            Reversible Injury: Normally reversible; likely will return to same job after recovery from incident: broken bones, severe lasceration, short hospitalization, short term disability, lost time (multi-day), fingertip amputation (not thumb)
+                            Permanent Injury: Normally non-reversible; likely will not return to same job after recovery from incident: fatality, limb amputation, long term disability, chronic illness
+                        How much has the hazard been reduced (i for help): 
+                            slightly reduced: PPE and Administrative controlled- Worker still responsible for compliance
+                            Modestly reduced: Engineering controlled - worker is prevented from contacting hazard
+                            Eliminated: Substitution or elimination of hazard
+                        Difficulty to complete: easy, average, difficult, help
+                            "Easy" - Most work can be done from the comfort of the desk chair A few forms need filled out or written Little to no collaboration is needed.
+                            "Average" - Collaboration is needed. The creation of new procedures or processes. 
+                            "Difficult" - "Blood, sweat, and tears" are needed to complete. The implementation of brand new ideas. Challenging the status quo
+                event date:
+
+leaderboard:    table of employees w/ arrows showing changes over last month (or by month)(points, level, team)
+                table of teams w/ arrows showing changes over last month (or by month) (points, level)
+                
+dashboard:
+- date range (default to first of month to current date): current year
+    [Whole Org]
+    - (same as team, but persistent & no tags)       
+    [By Teams]
+    - tag dropdown menu: team_names
+        bar graph of %of employees >= "bronze" w/ mark @75% (dropdown of teams)                
+        pie chart of point_categories by team (dropdown of teams)
+        bar graph of %attendance of staff meetings w/ mark @75% (dropdown of teams)
+
+- table of point categories & necessary points with "add", "edit", and "delete"
+
+
+--Entities--
+employees: id, name, points, manager, point_category
+teams: id (just in case manager changes), manager, points, point_category
+events: id, name, point_value
+categories: id, name, icon, more_than, less_than
+
+--Colors--
+#ff6666	(255,102,102)
+#ffcc66	(255,204,102)
+#66cccc	(102,204,204)
+#669999	(102,153,153)
+#999999	(153,153,153)
+
+--Dash--
+    - 
+https://dash.plotly.com/dash-core-components
