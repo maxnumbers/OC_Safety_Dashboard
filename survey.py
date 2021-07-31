@@ -53,41 +53,38 @@ points_by_event = {
     "Calculated Activity": 2,
 }
 
-with st.beta_expander("Submit Safety Form"):
-    st.title("OC Safety Form")
+st.title("OC Safety Form")
 
-    fields = (
-        employee := st.selectbox("Name:", employees["Name"]),
-        leader := st.selectbox("Leader Name:", leaders["Leader Name"]),
-        event := st.selectbox("Event Attended:", points_by_event.keys()),
+fields = (
+    employee := st.selectbox("Name:", employees["Name"]),
+    leader := st.selectbox("Leader Name:", leaders["Leader Name"]),
+    event := st.selectbox("Event Attended:", points_by_event.keys()),
+)
+
+if event == "Calculated Activity":
+    st.write("Additional information is needed")
+    calculated_fields = (
+        timeframe := st.selectbox(
+            "How much time to address this issue?",
+            calculated_fields["timeframe"]["text"],
+            help=calculated_fields["timeframe"]["help_text"],
+        ),
+        severity := st.selectbox(
+            "How severe was the resulting injury?",
+            calculated_fields["severity"]["text"],
+            help=calculated_fields["severity"]["help_text"],
+        ),
+        hazard_reduction := st.selectbox(
+            "How much has the hazard been reduced?",
+            calculated_fields["hazard_reduction"]["text"],
+            help=calculated_fields["hazard_reduction"]["help_text"],
+        ),
+        completion_difficulty := st.selectbox(
+            "Difficulty to complete?",
+            calculated_fields["completion_difficulty"]["text"],
+            help=calculated_fields["completion_difficulty"]["help_text"],
+        ),
     )
 
-    if event == "Calculated Activity":
-        st.write("Additional information is needed")
-        calculated_fields = (
-            timeframe := st.selectbox(
-                "How much time to address this issue?",
-                calculated_fields["timeframe"]["text"],
-                help=calculated_fields["timeframe"]["help_text"],
-            ),
-            severity := st.selectbox(
-                "How severe was the resulting injury?",
-                calculated_fields["severity"]["text"],
-                help=calculated_fields["severity"]["help_text"],
-            ),
-            hazard_reduction := st.selectbox(
-                "How much has the hazard been reduced?",
-                calculated_fields["hazard_reduction"]["text"],
-                help=calculated_fields["hazard_reduction"]["help_text"],
-            ),
-            completion_difficulty := st.selectbox(
-                "Difficulty to complete?",
-                calculated_fields["completion_difficulty"]["text"],
-                help=calculated_fields["completion_difficulty"]["help_text"],
-            ),
-        )
-
-        # all are filled in
-    st.button("Submit")
-
-st.dataframe(employees["Name", "Total_Points", "Point_Category"])
+    # all are filled in
+st.button("Submit")

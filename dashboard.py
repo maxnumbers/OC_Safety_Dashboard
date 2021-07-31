@@ -10,6 +10,7 @@ conn = sqlite3.connect("safety.db")
 leaders = pd.read_sql("SELECT * from leaders", conn, index_col="index")
 employees = pd.read_sql("SELECT* from employees", conn, index_col="index")
 
+
 st.title("Safety Metric Dashboard")
 
 st.header("Leaderboard")
@@ -28,4 +29,15 @@ st.plotly_chart(pie_chart)
 
 st.header("Team Staff Meeting Attendance")
 bar_graph = px.bar(leaders, x="Leader Name", y="Staff_Meeting_Percent_30Days")
+bar_graph.add_shape(  # add a horizontal "target" line
+    type="line",
+    line_color="salmon",
+    line_width=3,
+    opacity=1,
+    line_dash="dot",
+    x0=-1,
+    x1=4,
+    y0=75,
+    y1=75,
+)
 st.plotly_chart(bar_graph)
