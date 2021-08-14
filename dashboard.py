@@ -1,11 +1,12 @@
 import sqlite3
-
+import os
 import numpy as np
 import pandas as pd
+
 try:
     import plotly.express as px
 except:
-    pip install plotly
+    os.system('cmd /c "pip install plotly"')
     import plotly.express as px
 import streamlit as st
 
