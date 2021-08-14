@@ -1,13 +1,9 @@
-import sqlite3
 import os
+import sqlite3
+
 import numpy as np
 import pandas as pd
-
-try:
-    import plotly.express as px
-except:
-    os.system('cmd /c "pip install plotly"')
-    import plotly.express as px
+import plotly.express as px
 import streamlit as st
 
 # Load data
