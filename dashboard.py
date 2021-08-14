@@ -2,7 +2,11 @@ import sqlite3
 
 import numpy as np
 import pandas as pd
-import plotly.express as px
+try:
+    import plotly.express as px
+except:
+    pip install plotly
+    import plotly.express as px
 import streamlit as st
 
 # Load data
